@@ -8,10 +8,7 @@ public class Num2 {
 		// TODO Auto-generated method stub
 		
 		Run();
-		
-		
 	}
-
 	public static void Run() {
 		System.out.println("신나는 야구시합");
 		System.out.println("1. 데이터 입력");
@@ -20,28 +17,31 @@ public class Num2 {
 		System.out.println("메뉴선택( 1 - 3 )");
 		
 		int a = scan.nextInt();
-		if(a==1) { DataInput();}
+		if(a==1) { DataInput();	System.out.println("데이터 입력이 완료되었습니다.");}
 		if(a==2) { DataOut();}
-		if(a==2) {  		 }
+		if(a==3) {  		 }
 	}
 	public static void DataInput() {
-		String[][] TeamMemberName = new String[2][9];
-		Float[][] HitRate = new Float[2][9];
-		for(int a=1;a<3;a++) {
-			System.out.print(a+"팀의 이름을 입력하세요");
-			for(int b=0;b<9;b++) {
-				System.out.print(b+1 +"번 타자 정보 입력>");
-				TeamMemberName[a][b] = scan.nextLine();
-				HitRate[a][b] = scan.nextFloat();
-			}
+		String[] TeamName = new String[2];
+		String[][] MemberInformation = new String[2][20];
+		Float[][] HitRate = new Float[2][20];
+		scan.nextLine();
+		for(int a=1;a<3;a++){
+			System.out.print(a +"팀의 이름을 입력하세요>");
+			TeamName[a-1] = scan.nextLine();
+				for(int b=0;b<3;b++) {
+					System.out.print(b+1 +"번 타자 정보 입력>");
+					MemberInformation[a][b]=scan.nextLine();
+					String[] ArrayAbc = MemberInformation[a][b].split(",");
+					MemberInformation[a][b]=ArrayAbc[0];
+					HitRate[a][b]=Float.parseFloat(ArrayAbc[1]);
+				}
 		}
-		System.out.print("팀 데이터 입력이 완료되었습니다.");
-	}
-	
-	
-	
+}
+		
 	public static void DataOut() {
 		
+	//	System.out.println(TeamName[a]+"팀 정보");
 		
 		
 	}
