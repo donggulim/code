@@ -32,7 +32,7 @@ public class Num2 {
 			else {
 				System.out.println("잘못 입력하였습니다.");
 				continue;
-				}
+				 }
 			}
 }
 	
@@ -42,13 +42,16 @@ public class Num2 {
 			System.out.print(a+1 +"팀의 이름을 입력하세요>");
 			TeamName[a] = scan.nextLine();
 				for(int b=0;b<9;b++) {
-					try {
-						Input(a,b);
-					}catch(IndexOutOfBoundsException e) {
-						System.out.print(" ,를 다시 입력해주세요.");
-						Input(a,b);
-					}
+					ExceptionInput(a,b);
 				}
+		}
+	}
+	public static void ExceptionInput(int a,int b) {	
+		try {
+			Input(a,b);
+		}catch(IndexOutOfBoundsException e) {
+			System.out.print(" ,를 다시 입력해주세요.");
+			Input(a,b);
 		}
 	}
 	public static void Input(int a, int b) {
@@ -63,13 +66,11 @@ public class Num2 {
 			}
 	}
 		
-	public static void DataOut() {
-		
-	for(int a=0;a<2;a++) {
+	public static void DataOut() {	
+		for(int a=0;a<2;a++) {
 		System.out.println(TeamName[a]+" 팀 정보");
 			for(int b=0;b<9;b++) {
-				System.out.println(b+1 + "번,"+ MemberName[a][b]+","+HitRate[a][b]);
-		
+				System.out.println(b+1 + "번,"+ MemberName[a][b]+","+HitRate[a][b]);	
 			}
 		}
 	}
@@ -80,19 +81,19 @@ public class Num2 {
 					AttackFirstTeam(0,number);
 					SetCountZero();
 					AttackSecondTeam(1,number);
-					PrintHitNumber();
-				}
+			}
+		PrintHitNumber();
 	}
 	public static void SetCountZero() {
 		for(int number=0;number<4;number++) {
 				count[number]=0;
 			}
 	}
-	public static void SetCount() {
+/*	public static void SetCount() {
 		for(int number=0;number<3;number++) {
 				count[number]=0;
 			}
-	}
+	}*/
 	public static void PrintHitNumber() {
 		if((HitNumber[0]/4)!=HitNumber[1]/4){
 			System.out.println(TeamName[0]+"VS"+TeamName[1]);
@@ -115,7 +116,6 @@ public class Num2 {
 					}
 			}
 	}
-	
 	 private static void AttackSecondTeam(int a,int number) {
 		 System.out.println(number+1+"회말 "+TeamName[a]+"의 공격");
 		 for(int b=0;b<9;b++) {
@@ -129,24 +129,6 @@ public class Num2 {
 				}
 			}
 	 }
-/*	private static void Play(double HitRate){
-		while(count[3]==3){    //static int[] count = {0,0,0,0}; //안타,스트라이크,볼,아웃순서
-			 Run(HitRate);
-			if(count[1]==3) {
-					count[1]=0;
-					count[2]=0;
-					count[3]++;  // 스트라이크3개 아웃+1 
-				System.out.println(" 스트라이크 3개 됬습니다. 아웃 + 1"); break;
-			}	
-			if(count[3]==3) { //아웃 3개면 함수 종료.
-				System.out.println("아웃 3개 최종 안타수:"+ count[0]);
-				break;
-			}
-			System.out.println("선수 한명 play함수 종료.");
-			break;
-		}
-	}*/
-
 	private static void Run(double HitRate,int a) {
 			while(true) {	
 				double RandomNumber = Math.random();  //static int[] count = {0,0,0,0}; //안타,스트라이크,볼,아웃순서
@@ -192,26 +174,6 @@ public class Num2 {
 		count[3]++;
 	}
 	
-	
-	
-	private static void Check() {
-		if(count[1]==3) {
-			count[1]=0;
-			count[2]=0;
-			count[3]++;  // 스트라이크3개 아웃+1
-			System.out.println("스트라이크 3개가되어 아웃이 +1 됬습니다.");
-		}
-		if(count[2]==4) {
-			count[1]=0;
-			count[2]=0;
-			count[0]++;  // 볼4 안타+1
-			System.out.println("볼이 4개가 되어 안타가 +1 됬습니다.");
-		}
-		if(count[3]==3) {   //아웃3개.
-			System.out.println("아웃 3개. 최종 안타수:"+ count[0]);
-			System.out.println("-----------------------------");	
-		}
-	}
 	private static void print() {
 		System.out.println(count[1]+"S "+count[2]+"B "+count[3]+"O");
 	}
