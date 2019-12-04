@@ -2,7 +2,7 @@ package BaseBall;
 import java.util.*;
 
 public class BaseBall {
-
+	static Random generator = new Random(); 
 	public static void main(String[] args) {
 		Play();
 	}
@@ -16,27 +16,20 @@ public class BaseBall {
 	}
 	
 	private static void Run() {
-		Random generator = new Random(); 
 		while(count[2]<3) { 
-			int a = generator.nextInt(4);  //  0~3 랜덤넘버 생성.
-		if(a==0) {
-			System.out.println("스트라이크!");
-			count[0]++;
-			System.out.println(count[0]+"S "+count[1]+"B "+count[2]+"O");
+		int a = generator.nextInt(4);  //  0~3 랜덤넘버 생성.
+			if(a==0) {
+				System.out.println("스트라이크!");
+				count[0]++; print();
 			}else if(a==1){
-			System.out.println("볼");
-			count[1]++;
-			System.out.println(count[0]+"S "+count[1]+"B "+count[2]+"O");
+				System.out.println("볼");
+				count[1]++; print();
 			}else if(a==2) {
-			System.out.println("아웃! 다음 타자가 타석에 입장했습니다.");
-			count[0]=0; count[1]=0;
-			count[2]++;
-			System.out.println(count[0]+"S "+count[1]+"B "+count[2]+"O");
+				System.out.println("아웃! 다음 타자가 타석에 입장했습니다.");
+				count[0]=0; count[1]=0;count[2]++; print();
 			}else if(a==3) {
-			System.out.println("안타! 다음 타자가 타석에 입장했습니다.");
-			count[0]=0; count[1]=0;
-			count[3]++;
-			System.out.println(count[0]+"S "+count[1]+"B "+count[2]+"O");
+				System.out.println("안타! 다음 타자가 타석에 입장했습니다.");
+				count[0]=0; count[1]=0;count[3]++; print();
 		}	
 	}
 }
@@ -59,8 +52,12 @@ public class BaseBall {
 		
 	}
 	
-	
+	private static void print() {
+		System.out.println(count[0]+"S "+count[1]+"B "+count[2]+"O");
+	}
 }
+	
+
 
 			
 		
